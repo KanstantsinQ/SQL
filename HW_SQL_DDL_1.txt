@@ -1,0 +1,5 @@
+﻿HW_SQL_DDL
+Первая часть ДЗ
+
+
+Создайте таблицы и наполните их как написано в этом документе - https://docs.google.com/document/d/1FbW6HRhK36-mjP8i9rCk1764koh1NuuwBhkBF6TJKXY/edit?usp=sharing
