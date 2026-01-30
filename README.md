@@ -4,103 +4,107 @@
 </div>
 
 <div align="left">
-— это структурированный язык запросов, созданный для того, чтобы получать из базы данных необходимую информацию. Если описать схему работы SQL простыми словами, то специалист формирует запрос и направляет его в базу. Та в свою очередь обрабатывает эту информацию, «понимает», что именно нужно специалисту, и отправляет ответ.
+— to strukturalny język zapytań stworzony w celu pobierania potrzebnych informacji z bazy danych. Jeśli opisać działanie SQL prostymi słowami, specjalista tworzy zapytanie i wysyła je do bazy. Baza następnie przetwarza te informacje, „rozumie”, czego dokładnie potrzebuje specjalista, i odsyła odpowiedź.
 
 ---
 
-### Что такое реляционные БД?
+### Czym są relacyjne bazy danych?
 
-В реляционных базах данных данные хранятся в виде таблиц, они структурированы и разложены по строкам и столбцам, чтобы ими легче было оперировать. От англ. relation — «отношения», что указывает на то, что объекты в такой базе связаны определенными отношениями.
-
----
-
-### Как работают запросы?
-
-Чтобы разобраться, как именно работает магия запроса, давайте представим его путь от пользователя до нужных ему данных:
-#### Пользователь → Клиент → Запрос → Система управления → База данных → Таблица с базами данных
+W relacyjnych bazach danych dane przechowywane są w formie tabel, są one uporządkowane i podzielone na wiersze i kolumny, co ułatwia operowanie nimi. Z angielskiego *relation* – „relacje”, co wskazuje, że obiekty w takiej bazie są powiązane określonymi relacjami.
 
 ---
 
-### Что такое ключи в БД?
+### Jak działają zapytania?
 
-Ключ — это самый важный столбец в таблице, за счет этих значений и происходит взаимодействие в реляционной базе данных, он связывает таблицы между собой.
-
-##### Ключи бывают нескольких видов:
-
-+ Первичный ключ — идентификатор, такой как индекс или артикул.
-+ Потенциальный ключ — другое уникальное значение, которое может служить идентификатором.
-+ Внешний ключ — столбец-ссылка, используется для объединения двух таблиц, каждое значение внешнего ключа обязательно соответствует первичному ключу в другой таблице.
+Aby zrozumieć, jak dokładnie działa magia zapytań, wyobraźmy sobie drogę zapytania od użytkownika do potrzebnych danych:  
+#### Użytkownik → Klient → Zapytanie → System zarządzania → Baza danych → Tabela w bazie danych
 
 ---
 
-### Что такое SQL-операторы?
-Работать с данными помогают операторы — определенные слова или символы, которые используются для выполнения конкретной операции.
+### Czym są klucze w bazie danych?
 
-#### Операторы в SQL делятся на несколько групп в соответствии с задачами, которые они решают:
-1. DDL (Data Definition Language) — операторы определения данных. Они работают с объектами, то есть с целыми таблицами. Если базу нужно дополнить таблицей с новыми данными или, наоборот, убрать одну из таблиц с ошибочными данными — используется этот набор операторов.
+Klucz to najważniejsza kolumna w tabeli, dzięki której odbywa się interakcja w relacyjnej bazie danych; łączy on tabele ze sobą.
 
-+ CREATE — создание объекта в базе данных
-+ ALTER — изменение объекта
-+ DROP — удаление объекта
-2. DML (Data Manipulation Language) — операторы манипуляции данными. Эти операторы уже работают с содержимым таблиц — строками, атрибутами и значениями. С их помощью можно вносить изменения в конкретное значение. Например, заменить поле в колонке «Фамилия» в строке с данными сотрудницы компании посте того, как она вышла замуж. Или удалить строку с данными уволенного сотрудника.
+##### Klucze dzielą się na kilka typów:
 
-+ SELECT — выбор данных в соответствии с условием
-+ INSERT — добавление новых данных
-+ UPDATE — изменение существующих данных
-+ DELETE — удаление данных
-3. DCL (Data Control Language) — оператор определения доступа к данным. Он определяет, кто из пользователей может отправлять запросы к базе, менять объекты и значения. Например, можно отозвать доступ у сотрудника, перешедшего в другой отдел, а также открыть доступ к базе новому маркетологу или разработчику.
-
-+ GRANT — предоставление доступа к объекту
-+ REVOKE — отзыв ранее выданного разрешения
-+ DENY — запрет, который является приоритетным над 
-  разрешением
-4. TCL (Transaction Control Language) — язык управления транзакциями. Транзакции — это набор команд, которые выполняются поочередно. Если все команды выполнены, транзакция считается успешной, а если где-то произошла ошибка — транзакция откатывается назад, отменяя все выполненные команды. Наглядный пример такой транзакции — оплата онлайн, когда банк просит сначала ввести сумму и получателя, затем проверить и подтвердить операцию, а после ввести одноразовый код. На каждом из этих этапов оплату можно отменить и транзакция откатится назад.
-
-+ BEGIN TRANSACTION — обозначение начала транзакции
-+ COMMIT TRANSACTION — изменение команд внутри транзакции
-+ ROLLBACK TRANSACTION — откат транзакции
-+ SAVE TRANSACTION — указание промежуточной точки сохранения внутри транзакции
++ **Klucz główny (Primary Key)** – identyfikator, taki jak indeks lub numer artykułu.  
++ **Klucz potencjalny (Candidate Key)** – inne unikalne wartości, które mogą służyć jako identyfikator.  
++ **Klucz obcy (Foreign Key)** – kolumna-odnośnik używana do łączenia dwóch tabel; każda wartość klucza obcego musi odpowiadać kluczowi głównemu w innej tabeli.
 
 ---
 
-### Примеры реляционных СУБД
+### Czym są operatory SQL?
 
-+ PostgreSQL
-+ MySQL
-+ SQLite
-+ Oracle
-+ Google Cloud Spanner
+Do pracy z danymi służą operatory – określone słowa lub symbole używane do wykonywania konkretnych operacji.
 
-Сами по себе таблицы или база данных не способны выполнять операции, а в СУБД можно создавать новые таблицы, удалять ненужные данные, настраивать ключи и обрабатывать запросы. Основные задачи СУБД:
+#### Operatory SQL dzielą się na grupy w zależności od wykonywanych zadań:
 
-+ поддержка языков баз данных;
-+ непосредственное управление данными;
-+ управление буферами оперативной памяти;
-+ управление транзакциями;
-+ резервное копирование и восстановление после сбоев.
+1. **DDL (Data Definition Language)** – operatory definiowania danych. Działają na obiektach, czyli całych tabelach. Jeśli potrzebne jest dodanie nowej tabeli z danymi lub usunięcie błędnej tabeli – używa się tego zestawu operatorów.
+
++ **CREATE** – tworzenie obiektu w bazie danych  
++ **ALTER** – zmiana obiektu  
++ **DROP** – usunięcie obiektu  
+
+2. **DML (Data Manipulation Language)** – operatory manipulacji danymi. Działają na zawartości tabel – wierszach, atrybutach i wartościach. Za ich pomocą można wprowadzać zmiany w konkretnych danych, np. zmienić pole „Nazwisko” w wierszu pracownicy po jej zamążpójściu lub usunąć wiersz z danymi pracownika, który odszedł.
+
++ **SELECT** – wybór danych według warunku  
++ **INSERT** – dodanie nowych danych  
++ **UPDATE** – zmiana istniejących danych  
++ **DELETE** – usunięcie danych  
+
+3. **DCL (Data Control Language)** – operatory kontroli dostępu do danych. Określają, którzy użytkownicy mogą wysyłać zapytania do bazy, zmieniać obiekty i wartości.
+
++ **GRANT** – przyznanie dostępu do obiektu  
++ **REVOKE** – odebranie wcześniej przyznanego uprawnienia  
++ **DENY** – zabronienie dostępu, mające priorytet nad uprawnieniem  
+
+4. **TCL (Transaction Control Language)** – język sterowania transakcjami. Transakcje to zestaw poleceń wykonywanych po kolei. Jeśli wszystkie polecenia się powiodą, transakcja jest sukcesem; jeśli wystąpi błąd – transakcja jest cofana. Przykład: płatność online, gdzie bank prosi o wprowadzenie kwoty i odbiorcy, potem weryfikację i potwierdzenie, a następnie jednorazowy kod. Na każdym etapie transakcję można anulować.
+
++ **BEGIN TRANSACTION** – rozpoczęcie transakcji  
++ **COMMIT TRANSACTION** – zatwierdzenie zmian w transakcji  
++ **ROLLBACK TRANSACTION** – wycofanie transakcji  
++ **SAVE TRANSACTION** – określenie punktu zapisu w transakcji  
 
 ---
 
-### Нереляционные базы данных
+### Przykłady relacyjnych baz danych
 
-Кроме традиционных баз (SQL), существует ещё другой способ хранения данных, получивший широкое распространение со второй половины двухтысячных годов, – нереляционные базы данных. Они отличаются от реляционных тем, что в них для хранения используется не система из строк и столбцов, а применяется модель, которая оптимизирована для хранения определённого типа содержимого. Например, данные могут храниться в виде документов JSON, графов, а также ключей-значений.
++ PostgreSQL  
++ MySQL  
++ SQLite  
++ Oracle  
++ Google Cloud Spanner  
 
-Кроме того, можно сказать, что нереляционные базы данных не используют язык запросов SQL, и вместо него запросы осуществляются с помощью иных языков и конструкций. В нереляционных БД строго определенной схемы взаимосвязи между данными нет. То есть информационная модель определяется СУБД «по ходу дела» в процессе работы приложения. Это позволяет быстро адаптировать базу данных в зависимости от того, с каким типом информации в конкретный момент времени работает приложение. Для решения аналогичной задачи с помощью реляционных БД пришлось бы подключать дополнительную базу данных.
+Same tabele ani baza danych nie mogą wykonywać operacji; w systemie zarządzania bazą danych (DBMS) można tworzyć nowe tabele, usuwać niepotrzebne dane, ustawiać klucze i przetwarzać zapytania. Główne zadania DBMS:
+
++ obsługa języków baz danych;  
++ bezpośrednie zarządzanie danymi;  
++ zarządzanie pamięcią podręczną;  
++ zarządzanie transakcjami;  
++ tworzenie kopii zapasowych i odzyskiwanie danych po awarii.  
 
 ---
 
-### Для чего можно использовать базы данных NoSQL?
+### Bazy danych NoSQL
 
-Базы данных NoSQL хорошо подходят для многих современных приложений, например мобильных, игровых, интернет‑приложений, когда требуются гибкие масштабируемые базы данных с высокой производительностью и широкими функциональными возможностями, способные обеспечивать максимальное удобство использования.
+Oprócz tradycyjnych baz (SQL) istnieje inny sposób przechowywania danych, który zyskał popularność w drugiej połowie lat 2000 – bazy nierelacyjne (NoSQL). Różnią się tym, że dane nie są przechowywane w systemie wierszy i kolumn, lecz w modelu zoptymalizowanym do przechowywania określonego typu zawartości, np. dokumentów JSON, grafów lub par klucz-wartość.
+
+W NoSQL nie używa się SQL; zapytania wykonuje się przy pomocy innych języków lub konstrukcji. W nierelacyjnych bazach danych nie ma sztywnej schemy relacji między danymi – model danych jest definiowany „w locie” przez DBMS. Pozwala to szybko dostosować bazę do rodzaju przechowywanych danych. W przypadku relacyjnej bazy do podobnego zadania trzeba byłoby uruchomić dodatkową bazę danych.  
 
 ---
 
-### Примеры нереляционных БД
+### Do czego używa się baz NoSQL?
 
-+ Oracle NoSQL Database,
-+ MongoDB,
-+ Apache Cassandra,
-+ Berkeley DB,
-+ MemcacheDB,
-+ Redis,
+Bazy NoSQL są idealne dla nowoczesnych aplikacji, np. mobilnych, gier czy aplikacji webowych, które wymagają elastycznych, skalowalnych baz danych o wysokiej wydajności i szerokich możliwościach funkcjonalnych.
+
+---
+
+### Przykłady nierelacyjnych baz danych
+
++ Oracle NoSQL Database  
++ MongoDB  
++ Apache Cassandra  
++ Berkeley DB  
++ MemcacheDB  
++ Redis  
 + Amazon DynamoDB
