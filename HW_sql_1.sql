@@ -1,8 +1,8 @@
--- Таблица employees
--- Создать таблицу employees
--- id. serial,  primary key,
--- employee_name. Varchar(50), not null
--- Наполнить таблицу employee 70 строками.
+--Zadanie: Tabela employees (Pracownicy)
+--1. Utworzyć tabelę employees:
+--id: serial, primary key
+--employee_name: varchar(50), not null
+--2. Wypełnić tabelę employees 70 wierszami.
 
 create table employees(
 	id serial primary key,
@@ -82,11 +82,11 @@ values ('Ron'),
        ('Alfonso'),
        ('Zuza');
       
--- Таблица salary
--- Создать таблицу salary
--- id. Serial  primary key,
--- monthly_salary. Int, not null
--- Наполнить таблицу salary 15 строками:
+--Zadanie: Tabela salary (Wynagrodzenia)
+--1. Utworzyć tabelę salary:
+--id: serial, primary key
+--monthly_salary: int, not null
+--2. Wypełnić tabelę salary 15 wierszami.
       
 create table salary_1(
 	id serial primary key,
@@ -113,13 +113,14 @@ values  (1000),
 		(2400),
 		(2500);
 		
---Таблица employee_salary
--- Создать таблицу employee_salary
--- id. Serial  primary key,
--- employee_id. Int, not null, unique
--- salary_id. Int, not null
--- Наполнить таблицу employee_salary 40 строками:
--- в 10 строк из 40 вставить несуществующие employee_id	
+
+--Zadanie: Tabela employee_salary (Wynagrodzenia pracowników)
+--1. Utworzyć tabelę employee_salary:
+--id: serial, primary key
+--employee_id: int, not null, unique
+--salary_id: int, not null
+--2. Wypełnić tabelę employee_salary 40 wierszami:
+--w 10 wierszach z 40 należy wstawić nieistniejące wartości employee_id.
 	
 create table employee_salary(
 	id serial primary key,
@@ -171,12 +172,12 @@ values  (1,10),
 		(39,10),
 		(40,25);
 
---Таблица roles
--- оздать таблицу roles
--- id. Serial  primary key,
--- role_name. int, not null, unique
--- Поменять тип столба role_name с int на varchar(30)
--- Наполнить таблицу roles 20 строками:
+--Zadanie: Tabela roles (Role)
+--1. Utworzyć tabelę roles:
+--id: serial, primary key
+--role_name: int, not null, unique
+--2. Zmienić typ kolumny role_name z int na varchar(30).
+--3. Wypełnić tabelę roles 20 wierszami.
 
 create table roles_1(
 	id serial primary key,
@@ -185,10 +186,8 @@ create table roles_1(
 		
 select * from roles_1;
 
--- Поменять тип столба role_name с int на varchar(30)
 alter table roles_1 alter column role_name type varchar (30);
   
--- Наполнить таблицу roles 20 строками:
 insert into roles_1	(role_name)
 values 
 		('Junior Python developer'),
@@ -212,13 +211,14 @@ values
 		('Middle Automation QA engineer'),
 		('Senior Automation QA engineer');
 	
---Таблица roles_employee
--- Создать таблицу roles_employee
--- id. Serial  primary key,
--- employee_id. Int, not null, unique (внешний ключ для таблицы employees, поле id)
--- role_id. Int, not null (внешний ключ для таблицы roles, поле id)
--- Наполнить таблицу roles_employee 40 строками:
-	
+
+--Zadanie: Tabela roles_employee (Role pracowników)
+--1. Utworzyć tabelę roles_employee:
+--id: serial, primary key
+--employee_id: int, not null, unique (klucz obcy dla tabeli employees, pole id)
+--role_id: int, not null (klucz obcy dla tabeli roles, pole id)
+--2. Wypełnić tabelę roles_employee 40 wierszami.
+
 create table roles_employee(
 	id serial primary key,
 	employee_id int not null unique,
@@ -231,7 +231,6 @@ create table roles_employee(
 	
 select * from roles_employee;
 
--- Наполнить таблицу roles_employee 40 строками:
 insert into roles_employee (employee_id, role_id)
 values	
 		(1,2),
@@ -273,7 +272,4 @@ values
 		(37,13),
 		(38,5),
 		(39,11),
-		(40,1);
-
-
-     
+		(40,1);   
